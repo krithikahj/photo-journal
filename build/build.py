@@ -300,9 +300,9 @@ def render_trip(trip, items, next_trip, settings):
 </figure>""")
 
         if it["kind"] == "art":
-            body = f'<div class="label muted">{num} — Interlude</div>'
+            body = ""  # artsy shots show only their caption, no label
             if title:
-                body += f'\n<p class="caption">{esc(title)}</p>'
+                body += f'<p class="caption">{esc(title)}</p>'
             if text:
                 body += "\n" + paragraphs(text)
         else:
