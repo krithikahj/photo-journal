@@ -328,7 +328,6 @@ def render_trip(trip, items, next_trip, settings):
 <div class="label muted">{esc(kicker)}</div>
 <h1>{esc(trip['title'])}</h1>
 <div class="intro">{intro}</div>
-<div class="label muted cue">Scroll to move through the trip ↓</div>
 </header>
 <main class="story">
 <div class="stage">
@@ -403,7 +402,9 @@ def build():
             print(f"  note: story.md mentions '{name}' but there's no such file in the folder")
         if not items:
             continue
-        next_trip = trips[idx + 1] if idx + 1 < len(trips) else None
+        # Next goes to the next older trip and wraps to the newest at the end.
+        # Only trips shown on the site count, so it never points at a hidden one.
+        next_trip = trips[(idx + 1) % len(trips)] if len(trips) > 1 else None
         (out_dir / "index.html").write_text(render_trip(trip, items, next_trip, settings), encoding="utf-8")
 
     (OUT / "index.html").write_text(render_home(trips, settings), encoding="utf-8")
