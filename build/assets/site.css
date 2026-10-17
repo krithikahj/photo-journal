@@ -9,7 +9,8 @@
   --frame: #ecece6;
   --mat: #f0f0eb;
   --night: #1d1d1b;
-  --display: "Fraunces", Georgia, serif;
+  --display: "Playfair Display", Georgia, serif;
+  --display-spacing: 0.07em;
   --serif: "Newsreader", Georgia, serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
@@ -54,8 +55,8 @@ img, video { display: block; }
   font-family: var(--display);
   font-weight: 400;
   font-size: clamp(52px, 9vw, 112px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: var(--display-spacing);
 }
 .list { display: flex; flex-direction: column; }
 .list-head {
@@ -79,7 +80,7 @@ img, video { display: block; }
   text-decoration: none;
 }
 .row .year { width: 72px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
-.row .title { flex: 1 1 300px; font-family: var(--display); font-size: 34px; line-height: 1.15; }
+.row .title { flex: 1 1 300px; font-family: var(--display); font-size: 34px; line-height: 1.15; letter-spacing: 0.05em; }
 .row .where { font-style: italic; font-size: 18px; color: var(--body); }
 .row svg { align-self: center; transition: transform 200ms ease; }
 .row:hover svg { transform: translateX(4px); }
@@ -120,8 +121,8 @@ img, video { display: block; }
   font-family: var(--display);
   font-weight: 400;
   font-size: clamp(48px, 8vw, 104px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: var(--display-spacing);
 }
 .trip-head .intro { max-width: 600px; color: var(--body); font-size: 21px; line-height: 1.5; }
 .trip-head .intro p { margin: 0 0 0.8em; }
@@ -212,7 +213,7 @@ img, video { display: block; }
   transition: opacity 500ms ease;
 }
 .step.is-active { opacity: 1; }
-.step h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 36px; line-height: 1.1; }
+.step h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 36px; line-height: 1.15; letter-spacing: 0.05em; }
 .step p { margin: 0; color: var(--body); }
 .step p + p { margin-top: 0.7em; }
 .step .caption { font-style: italic; }
@@ -227,7 +228,7 @@ img, video { display: block; }
   justify-content: center;
   gap: 20px;
 }
-.trip-end .next { font-family: var(--display); font-size: 40px; line-height: 1.15; text-decoration: none; }
+.trip-end .next { font-family: var(--display); font-size: 40px; line-height: 1.2; letter-spacing: 0.05em; text-decoration: none; }
 .trip-end .back { padding: 12px 0; align-self: flex-start; }
 
 /* ---------------- phone ---------------- */
