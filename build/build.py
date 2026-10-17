@@ -259,11 +259,14 @@ def render_home(trips, settings):
 <main class="wrap">
 <h1>{heading}</h1>
 <section class="list" aria-label="Journals">
-<div class="list-head"><span>Journals</span><span class="muted">Newest first</span></div>
+<div class="list-head"><span>Journals</span><button class="sort" type="button" aria-label="Change order">Newest first ↓</button></div>
+<div class="rows">
 {rows_html}
+</div>
 </section>
 <footer class="foot">{esc(settings['footer'])}</footer>
 </main>
+<script src="site.js" defer></script>
 </body>
 </html>
 """

@@ -266,3 +266,18 @@ img, video { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .layer, .step, .bar i { transition: opacity 200ms linear; transform: none !important; }
 }
+
+/* sort toggle on the home list */
+.sort {
+  margin: -14px 0;
+  padding: 14px 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.sort:hover { color: var(--accent); }
+.rows { display: flex; flex-direction: column; }

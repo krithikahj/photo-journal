@@ -1,3 +1,17 @@
+// Home page: flip the journal list between newest and oldest first.
+(function () {
+  var btn = document.querySelector(".sort");
+  var rows = document.querySelector(".rows");
+  if (!btn || !rows) return;
+  var newest = true;
+  btn.addEventListener("click", function () {
+    newest = !newest;
+    var items = Array.prototype.slice.call(rows.children).reverse();
+    items.forEach(function (el) { rows.appendChild(el); });
+    btn.textContent = newest ? "Newest first ↓" : "Oldest first ↑";
+  });
+})();
+
 // Scroll-driven photo story: the step nearest the reading line becomes active,
 // and its photo or video fades in on the pinned frame.
 (function () {
