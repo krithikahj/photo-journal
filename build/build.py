@@ -72,11 +72,14 @@ def parse_story(path):
     parts = re.split(r"^##[ \t]+(.+?)[ \t]*$", text, flags=re.M)
     intro = parts[0].strip()
     for i in range(1, len(parts), 2):
-        name = parts[i].strip().lower()
+        # "## IMG_1234.HEIC" or "## IMG_1234.HEIC | art" for an artsy shot
+        header = parts[i].strip()
+        name, _, flag = header.partition("|")
+        is_art = flag.strip().lower() == "art"
         body = parts[i + 1].strip()
         first, _, rest = body.partition("\n")
-        blocks[name] = (first.strip(), rest.strip())
-    return details, intro, blocks
+        blocks[name.strip().lower()] = (first.strip(), rest.strip(), is_art)
+    return details, intro, blocks  # blocks keep the order they appear in story.md
 
 
 def paragraphs(text):
@@ -192,8 +195,10 @@ def collect_trips():
         return trips
     for folder in sorted(p for p in TRIPS.iterdir() if p.is_dir() and not p.name.startswith((".", "_"))):
         details, intro, blocks = parse_story(folder / "story.md")
+        # Files listed in story.md come first, in that order; any others follow by name.
+        story_order = {name: i for i, name in enumerate(blocks)}
         files = sorted((p for p in folder.iterdir() if p.is_file() and media_kind(p)),
-                       key=lambda p: p.name.lower())
+                       key=lambda p: (story_order.get(p.name.lower(), len(story_order)), p.name.lower()))
         if not files:
             print(f"  skipping {folder.name}: no photos or videos")
             continue
@@ -366,8 +371,10 @@ def build():
         mentioned = set()
         items = []
         for f in trip["files"]:
+            title, text, is_art = trip["blocks"].get(f.name.lower(), ("", "", False))
             kind = media_kind(f)
-            title, text = trip["blocks"].get(f.name.lower(), ("", ""))
+            if is_art and kind == "story":
+                kind = "art"
             if f.name.lower() in trip["blocks"]:
                 mentioned.add(f.name.lower())
             try:

@@ -5,9 +5,9 @@ A photo blog where each trip is a scrolling story. You add a folder of photos an
 ## Adding a new trip
 
 1. Make a folder for the trip, named with the year first: `2026-lisbon`.
-2. Put the photos and videos you want to show in it. Name them with a number in front so they're in order:
-   `01-arrival.jpg`, `02-tram.jpg`, `03-tiles.art.jpg`, `04-fado.mov`
-   - Add `.art` before the ending (`03-tiles.art.jpg`) for an artsy shot. It's shown on a white border with just a short caption.
+2. Put the photos and videos you want to show in it. They can keep their original names, like `IMG_4410.HEIC`.
+   - The order comes from `story.md`. Files it doesn't list go at the end, sorted by name.
+   - To mark an artsy shot, add `| art` after its name in `story.md` (`## IMG_4402.HEIC | art`). It's shown on a white border with just a short caption. Adding `.art` to the file name (`tiles.art.jpg`) also works.
    - Videos (`.mp4` or `.mov`) play silently on a loop while they're on screen. Readers can tap for sound. Keep clips short, about 10–20 seconds.
    - iPhone `.heic` photos work.
 3. Optional: copy `story-template.md` into the folder, rename it `story.md`, and fill it in. Skip it and the trip still publishes, with the folder name as the title and no text.
@@ -26,16 +26,17 @@ where: Portugal
 
 Optional opening paragraph.
 
-## 01-arrival.jpg
+## IMG_4410.HEIC
 First evening
 We landed late and walked down to the river.
 
-## 03-tiles.art.jpg
+## IMG_4402.HEIC | art
 Tiles in Alfama
 ```
 
 - The part between the `---` lines shows on the home page and at the top of the trip.
-- Each `##` line is a file name from the folder. The line under it is the title (or the caption, for `.art` shots). Anything after that is the text.
+- Each `##` line is a file name from the folder, exactly as it's spelled (capital letters don't matter). The order of the `##` blocks is the order on the page.
+- The line under it is the title (or the caption, for artsy shots). Anything after that is the text.
 - Leave a blank line between paragraphs.
 
 ## Uploading from the browser
