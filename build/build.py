@@ -195,6 +195,9 @@ def collect_trips():
         return trips
     for folder in sorted(p for p in TRIPS.iterdir() if p.is_dir() and not p.name.startswith((".", "_"))):
         details, intro, blocks = parse_story(folder / "story.md")
+        if details.get("hidden", "").lower() in ("yes", "true"):
+            print(f"  hidden: {folder.name}")
+            continue
         # Files listed in story.md come first, in that order; any others follow by name.
         story_order = {name: i for i, name in enumerate(blocks)}
         files = sorted((p for p in folder.iterdir() if p.is_file() and media_kind(p)),

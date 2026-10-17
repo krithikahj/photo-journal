@@ -15,6 +15,8 @@ A photo blog where each trip is a scrolling story. You add a folder of photos an
 
 To change a trip, edit or replace files in its folder the same way. To remove a trip, delete its folder.
 
+To hide a trip without deleting it, add `hidden: yes` between the `---` lines of its `story.md`. Remove that line to show it again.
+
 ## The story.md file
 
 ```

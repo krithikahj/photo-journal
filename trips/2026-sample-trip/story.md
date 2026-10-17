@@ -2,6 +2,7 @@
 title: Sample trip
 year: 2026
 where: Somewhere nice
+hidden: yes
 ---
 
 This is a sample journal so you can see how a trip looks. Replace it with your own folder and delete this one.
